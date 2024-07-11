@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages%}
+    {% for message in messages %}
+    <div class="alert-info">
+        <strong>{{message}}</strong>
+    </div>
+    {% endfor%}
+    {%endif%}
+
+    <div class="content">
+        <h1>TODO LIST</h1>
+
+        {% for i in items %}
+        {{i.title}}
+        {{i.date}}
+        {{i.details}}
+
+        <form action="del/{{i.id}}" method="POST" class="delete">
+            <button value="delete" type="submit" vlaue="remove" >remove</button>
+
+
+        </form>
+
+         {% endfor %}
+    </div>
+    <div>
+        <form action="" method="POST">
+          {% csfr token%}
+          {{forms}}
+          
+          <button type="submit" value="submit"></button> 
+
+
+
+
+        </form>
+    </div>
+
+    
+</body>
+</html>
